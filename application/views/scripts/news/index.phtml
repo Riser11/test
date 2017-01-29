@@ -1,0 +1,44 @@
+
+<?php
+//$a=$this->_helper->json($this->view->news);
+//echo '<script> a+=\''.$this->news.'\';</script>'
+//echo $this->jsonNews;
+
+echo '<script> var news_json=\''.$this->jsonNews.'\';</script>'
+
+
+
+
+
+
+
+?>
+
+
+<html>
+   <head>
+	   <meta charset="utf-8">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" rel="stylesheet" />
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+      <script type="text/javascript">
+		 
+         Ext.onReady(function() {
+		var news=Ext.JSON.decode(news_json)
+			for(i in news){
+				if(news[i].published==true){
+		Ext.create('Ext.Panel', {
+            renderTo: Ext.getBody(),
+            height: 100,
+            width: 200,
+            title: news[i].header,
+            html: news[i].content.substring(0, 70)+'<br><br><small><i>Дата создания:'+news[i].date_of_create+'</i></small>',
+            });
+			}
+			}
+         });
+      </script>
+   </head>
+   <body>
+      
+   </body>
+</html>
