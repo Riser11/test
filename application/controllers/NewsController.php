@@ -10,18 +10,9 @@ class NewsController extends Zend_Controller_Action
 
     public function indexAction()
     {
-          $news = $this->db->query('SELECT * FROM news')->fetchAll();
-
-		
-
-		/*
-		foreach($this->view->news as $value){
-			$this->view->jsonNews=json_encode(array("$counter"=>$value));
-				$counter++;
-		}*/
-		
+    $news = $this->db->query('SELECT * FROM news')->fetchAll();		
 	$this->view->jsonNews =	json_encode($news);
-	   //  $a=$this->_helper->json($news);
+	  
 	
     }
 
